@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Modal } from "./components/Modals/Modal";
 import { UserForm } from "./components/Users/UserForm";
 import { Users } from "./components/Users/Users";
 
@@ -11,6 +12,8 @@ const App = () => {
     },
   ]);
 
+  const [showModal, setShowModal] = useState("");
+
   const addNewUser = (newUser) => {
     setUserList((prevState) => {
       return [...prevState, newUser];
@@ -18,17 +21,10 @@ const App = () => {
     console.log(newUser);
   };
 
-  /* let userList = [
-    {
-      id: Math.random().toString(),
-      name: "Max",
-      age: 31,
-    },
-  ]; */
-
   return (
     <div>
-      <UserForm onUserCreate={addNewUser} />
+      {showModal && <Modal title={showModal.title}  message={showModal.message} setShowModal={setShowModal}/>}
+      <UserForm onUserCreate={addNewUser} setShowModal={setShowModal} />
       <Users users={userList} />
     </div>
   );
