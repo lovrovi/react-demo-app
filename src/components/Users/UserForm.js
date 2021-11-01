@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Card } from "../Containers/Card";
+import styles from './UserForm.module.css'
 
 export const UserForm = (props) => {
   const [username, setUsername] = useState("");
@@ -38,8 +39,8 @@ export const UserForm = (props) => {
   };
 
   return (
-    <Card>
-      <form onSubmit={submitUserHandler}>
+    <Card style={styles.card}>
+      <form className={styles.form} onSubmit={submitUserHandler}>
         <label>Username</label>
         <input
           type="text"
